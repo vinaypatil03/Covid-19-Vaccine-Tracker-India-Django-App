@@ -113,20 +113,27 @@ def findByPin(request):
     date = datetime.datetime.strptime(date, "%Y-%m-%d").strftime("%d-%m-%Y")
     params = {"pincode": pin, "date": date}
     if att == "false":
-        params = {"pincode": pin, "date": date}
-        x = requests.get("https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByPin", params=params)
-        xj = x.json()
-        if not xj['sessions']:
-            text = "<h3>Vaccines Not Available in Your Area</h3>"
-        else:
-            text = maketabsfalse(x.json())
+        try:
+            x = requests.get("https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByPin", params=params)
+            xj = x.json()
+            print(xj)
+            if not xj['sessions']:
+                text = "<h3>Vaccines Not Available in Your Area</h3>"
+            else:
+                text = maketabsfalse(x.json())
+        except:
+            text = "Cowin Servers Seems to Be Busy Check After Some Time"
     else:
-        x = requests.get("https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin", params=params)
-        xj = x.json()
-        if not xj['centers']:
-            text = "<h3>Vaccines Not Available in Your Area</h3>"
-        else:
-            text = maketabstrue(xj)
+        try:
+            x = requests.get("https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin",
+                             params=params)
+            xj = x.json()
+            if not xj['centers']:
+                text = "<h3>Vaccines Not Available in Your Area</h3>"
+            else:
+                text = maketabstrue(xj)
+        except:
+            text = "Cowin Servers Seems to Be Busy Check After Some Time"
         # print(x.json())
 
     return Response(data={"data": text})
@@ -144,18 +151,25 @@ def findByDistrict(request):
     id = getid(state, district)
     params = {"district_id": id, "date": date}
     if att == "false":
-        x = requests.get("https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByDistrict", params=params)
-        xj = x.json()
-        if not xj['sessions']:
-            text2 = "<h3>Vaccines Not Available in Your Area</h3>"
-        else:
-            text2 = maketabsfalse(x.json())
+        try:
+            x = requests.get("https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByDistrict",
+                             params=params)
+            xj = x.json()
+            if not xj['sessions']:
+                text2 = "<h3>Vaccines Not Available in Your Area</h3>"
+            else:
+                text2 = maketabsfalse(x.json())
+        except:
+            text2 = "Cowin Servers Seems to Be Busy Check After Some Time"
     else:
-        x = requests.get("https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict",
-                         params=params)
-        xj = x.json()
-        if not xj['centers']:
-            text2 = "<h3>Vaccines Not Available in Your Area</h3>"
-        else:
-            text2 = maketabstrue(xj)
+        try:
+            x = requests.get("https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict",
+                             params=params)
+            xj = x.json()
+            if not xj['centers']:
+                text2 = "<h3>Vaccines Not Available in Your Area</h3>"
+            else:
+                text2 = maketabstrue(xj)
+        except:
+            text2 = "Cowin Servers Seems to Be Busy Check After Some Time"
     return Response(data={"data": text2})
