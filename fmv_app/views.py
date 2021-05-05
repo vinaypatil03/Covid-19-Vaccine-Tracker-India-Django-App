@@ -116,7 +116,6 @@ def findByPin(request):
         try:
             x = requests.get("https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByPin", params=params)
             xj = x.json()
-            print(xj)
             if not xj['sessions']:
                 text = "<h3>Vaccines Not Available in Your Area</h3>"
             else:
