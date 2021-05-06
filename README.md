@@ -10,6 +10,10 @@ It uses the Cowin API's to search the availability of Vaccines.
 
 https://apisetu.gov.in/public/api/cowin
 
+Screen Shot of the application
+
+![alt text](https://github.com/vinaypatil03/Covid-19-Vaccine-Tracker-India-Django-App/blob/master/static/images/Screenshot%20(61).png)
+
 ## Installation
 
 Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
@@ -29,3 +33,5 @@ By default the app will run on port 8000, in case you need to change the port ju
 ```bash
 python manage.py runserver localhost:[YOUR PORT NUMBER]
 ```
+
+PS: I am not a Front End Developer by any means, I have tried to make the UI as easy as possible.
