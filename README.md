@@ -1,10 +1,13 @@
 # Covid-19-Vaccine-Tracker-India-Django-App
 
-![alt text](https://github.com/vinaypatil03/Covid-19-Vaccine-Tracker-India-Django-App/blob/master/static/images/images.png)
+![alt text](https://github.com/vinaypatil03/Covid-19-Vaccine-Tracker-India-Django-App/blob/master/static/images/images.png)  
+
 This is a Django Based App used to find the availablility of vaccines based on Pincode or District.
 
-![alt text](https://github.com/vinaypatil03/Covid-19-Vaccine-Tracker-India-Django-App/blob/master/static/images/india.png)
-It uses the Cowin API's to search the availability of Vaccines.
+![alt text](https://github.com/vinaypatil03/Covid-19-Vaccine-Tracker-India-Django-App/blob/master/static/images/india.png)  
+
+It uses the Cowin API's to search the availability of Vaccines.  
+
 https://apisetu.gov.in/public/api/cowin
 
 ## Installation
