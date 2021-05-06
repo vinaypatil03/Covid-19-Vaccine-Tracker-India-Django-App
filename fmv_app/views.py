@@ -11,6 +11,10 @@ with open('fmv_app/states.json') as f:
 with open('fmv_app/district.json') as k:
     dist = json.load(k)
 
+heads = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36 Edg/90.0.818.51"
+}
+
 
 # Create your views here.
 def home(request):
@@ -114,7 +118,8 @@ def findByPin(request):
     params = {"pincode": pin, "date": date}
     if att == "false":
         try:
-            x = requests.get("https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByPin", params=params)
+            x = requests.get("https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByPin", params=params,
+                             headers=heads)
             xj = x.json()
             if not xj['sessions']:
                 text = "<h3>Vaccines Not Available in Your Area</h3>"
@@ -125,7 +130,7 @@ def findByPin(request):
     else:
         try:
             x = requests.get("https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin",
-                             params=params)
+                             params=params, headers=heads)
             xj = x.json()
             if not xj['centers']:
                 text = "<h3>Vaccines Not Available in Your Area</h3>"
@@ -152,7 +157,7 @@ def findByDistrict(request):
     if att == "false":
         try:
             x = requests.get("https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByDistrict",
-                             params=params)
+                             params=params, headers=heads)
             xj = x.json()
             if not xj['sessions']:
                 text2 = "<h3>Vaccines Not Available in Your Area</h3>"
@@ -163,7 +168,7 @@ def findByDistrict(request):
     else:
         try:
             x = requests.get("https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict",
-                             params=params)
+                             params=params, headers=heads)
             xj = x.json()
             if not xj['centers']:
                 text2 = "<h3>Vaccines Not Available in Your Area</h3>"
