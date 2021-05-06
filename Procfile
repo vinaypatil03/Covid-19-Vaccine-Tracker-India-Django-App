@@ -1,1 +1,1 @@
-web: waitress-serve --port=8000 --host=localhost fmv_project.wsgi:application
+web: waitress-serve --port=$PORT fmv_project.wsgi:application
